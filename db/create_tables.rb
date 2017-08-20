@@ -2,7 +2,7 @@ require 'sqlite3'
 
 db = SQLite3::Database.new "db/address_bloc.sqlite"
 
-db.execute("DROP TABLE address_bloc;")
+db.execute("DROP TABLE address_book;")
 db.execute("DROP TABLE entry;")
 
 sql = <<-SQL
@@ -24,3 +24,5 @@ sql = <<-SQL
     FOREIGN KEY (address_book_id) REFERENCES address_book(id)
   );
 SQL
+
+db.execute sql
