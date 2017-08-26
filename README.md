@@ -1,4 +1,4 @@
-To setup the database:
+Run these command from the root directory to setup the database:
 
 ```
 $ bundle
