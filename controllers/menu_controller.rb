@@ -59,6 +59,7 @@ class MenuController
 
     index = get.chomps.to_i
 
+    # Adding 1 since id nums start at 1 and indicies start at 0
     @address_book = AddressBook.find(index + 1)
     system "clear"
     return if @address_book
@@ -67,7 +68,7 @@ class MenuController
   end
 
   def view_all_entries
-    Entry.all.each do |entry|
+    @address_book.entries.each do |entry|
       system "clear"
       puts entry.to_s
       entry_submenu(entry)
@@ -96,7 +97,7 @@ class MenuController
   def search_entries
     print "Search by name: "
     name = gets.chomp
-    match = Entry.find_by(:name, name)
+    match = @address_book.find_entry(name)
     system "clear"
     if match
       puts match.to_s
